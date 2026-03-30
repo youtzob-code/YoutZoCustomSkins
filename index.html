@@ -1157,7 +1157,7 @@
     position: fixed; top: 0; right: 0; z-index: 9999;
     display: flex; align-items: center; gap: 10px;
     padding: 10px 18px;
-    background: linear-gradient(90deg, transparent, #080508cc);
+    background: linear-gradient(90deg, transparent, #080508ee);
     pointer-events: auto;
   }
   .auth-btn {
@@ -1171,20 +1171,19 @@
     cursor: pointer; border-radius: 1px; transition: all .2s;
   }
   .auth-btn:hover { border-color: var(--red); background: #1a0c10; }
-  .auth-btn img { width: 18px; height: 18px; border-radius: 50%; }
   .auth-avatar {
     width: 32px; height: 32px; border-radius: 50%;
     border: 1px solid #c8aa6e44; cursor: pointer;
-    transition: border-color .2s;
+    transition: border-color .2s; object-fit: cover;
   }
   .auth-avatar:hover { border-color: var(--gold); }
 
   /* ── PROFILE PANEL ── */
   .profile-panel {
     display: none; position: fixed; top: 0; right: 0; bottom: 0;
-    width: 380px; z-index: 10000;
+    width: 360px; z-index: 10000;
     background: var(--bg2); border-left: 1px solid #c0392b22;
-    overflow-y: auto; padding: 0 0 40px;
+    overflow-y: auto; padding-bottom: 40px;
     animation: slideIn .25s ease;
   }
   .profile-panel.open { display: block; }
@@ -1194,9 +1193,8 @@
   }
   .profile-topbar {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 18px 20px; border-bottom: 1px solid #c0392b18;
-    background: var(--bg);
-    position: sticky; top: 0; z-index: 5;
+    padding: 16px 20px; border-bottom: 1px solid #c0392b18;
+    background: var(--bg); position: sticky; top: 0; z-index: 5;
   }
   .profile-title {
     font-family: 'Orbitron', sans-serif; font-size: 10px;
@@ -1204,55 +1202,49 @@
   }
   .profile-close {
     background: none; border: none; color: var(--text-dim);
-    font-size: 18px; cursor: pointer; padding: 4px;
-    transition: color .2s; line-height: 1;
+    font-size: 18px; cursor: pointer; padding: 4px; transition: color .2s; line-height:1;
   }
   .profile-close:hover { color: var(--gold); }
   .profile-header {
     display: flex; flex-direction: column; align-items: center;
-    padding: 28px 20px 20px; border-bottom: 1px solid #c0392b11;
-    text-align: center;
+    padding: 24px 20px 18px; border-bottom: 1px solid #c0392b11; text-align: center;
   }
   .profile-photo {
-    width: 72px; height: 72px; border-radius: 50%;
-    border: 2px solid #c8aa6e44; margin-bottom: 12px;
+    width: 68px; height: 68px; border-radius: 50%;
+    border: 2px solid #c8aa6e44; margin-bottom: 10px; object-fit: cover;
   }
   .profile-name {
-    font-family: 'IM Fell English', serif; font-size: 20px; color: var(--gold);
+    font-family: 'IM Fell English', serif; font-size: 19px; color: var(--gold);
   }
   .profile-email {
     font-family: 'Orbitron', sans-serif; font-size: 8px;
     letter-spacing: 2px; color: var(--text-dim); margin-top: 4px;
   }
-  .profile-section {
-    padding: 20px 20px 0;
-  }
+  .profile-section { padding: 18px 20px 0; }
   .profile-section-title {
     font-family: 'Orbitron', sans-serif; font-size: 9px;
     letter-spacing: 3px; text-transform: uppercase; color: var(--red-dark);
-    margin-bottom: 14px; padding-bottom: 8px;
-    border-bottom: 1px solid #c0392b11;
+    margin-bottom: 12px; padding-bottom: 7px; border-bottom: 1px solid #c0392b11;
   }
-  .profile-skin-grid {
+  .profile-empty {
+    color: #4a2222; font-family:'Orbitron',sans-serif; font-size:9px;
+    letter-spacing:2px; text-align:center; padding:16px;
+  }
+  .profile-liked-grid {
     display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
   }
   .profile-skin-mini {
     background: var(--bg3); border: 1px solid #c0392b11;
-    cursor: pointer; transition: border-color .2s; overflow: hidden;
-    border-radius: 1px;
+    cursor: pointer; transition: border-color .2s; overflow: hidden; border-radius: 1px;
   }
   .profile-skin-mini:hover { border-color: #c0392b55; }
   .profile-skin-mini img { width:100%; aspect-ratio:16/9; object-fit:cover; display:block; }
-  .profile-skin-mini-info { padding: 6px 8px; }
+  .profile-skin-mini-info { padding: 5px 7px; }
   .profile-skin-mini-champ { font-family:'Orbitron',sans-serif; font-size:7px; color:var(--red-dark); letter-spacing:2px; }
   .profile-skin-mini-name  { font-family:'IM Fell English',serif; font-size:12px; color:var(--gold); }
-  .profile-empty {
-    color: #4a2222; font-family:'Orbitron',sans-serif; font-size:9px;
-    letter-spacing:2px; text-align:center; padding:20px;
-  }
   .profile-logout-btn {
     display: block; width: calc(100% - 40px); margin: 20px 20px 0;
-    padding: 12px 20px; border: 1px solid #c0392b33;
+    padding: 11px 20px; border: 1px solid #c0392b33;
     background: none; color: #8a4a4a;
     font-family: 'Orbitron', sans-serif; font-size: 9px;
     letter-spacing: 2px; text-transform: uppercase;
@@ -1265,59 +1257,70 @@
   }
   .profile-overlay-bg.open { display: block; }
 
-  /* ── UPLOAD PANEL ── */
-  .upload-section { padding: 20px 20px 0; }
+  /* ── UPLOAD ── */
+  .upload-section { padding: 18px 20px 0; }
   .upload-drop {
     border: 1px dashed #c0392b44; background: var(--bg3);
-    padding: 28px 20px; text-align: center; cursor: pointer;
-    border-radius: 1px; transition: border-color .2s;
-    margin-bottom: 12px;
+    padding: 24px 16px; text-align: center; cursor: pointer;
+    border-radius: 1px; transition: border-color .2s; margin-bottom: 10px;
   }
   .upload-drop:hover, .upload-drop.dragover { border-color: var(--gold); }
-  .upload-drop-icon { font-size: 28px; margin-bottom: 8px; }
+  .upload-drop-icon { font-size: 26px; margin-bottom: 6px; }
   .upload-drop-txt  { font-family:'Orbitron',sans-serif; font-size:9px; color:#6b3a3a; letter-spacing:2px; }
-  .upload-input-row { margin-bottom: 10px; }
+  .upload-input-row { margin-bottom: 8px; }
   .upload-label {
     display: block; font-family:'Orbitron',sans-serif; font-size:8px;
-    letter-spacing:2px; color:var(--red-dark); margin-bottom:5px;
-    text-transform:uppercase;
+    letter-spacing:2px; color:var(--red-dark); margin-bottom:4px; text-transform:uppercase;
   }
   .upload-input {
     width:100%; background:var(--bg); border:1px solid #c0392b22;
-    color:var(--text); padding:9px 14px;
+    color:var(--text); padding:8px 12px;
     font-family:'Rajdhani',sans-serif; font-size:14px;
     outline:none; border-radius:1px; transition:border-color .2s;
   }
   .upload-input:focus { border-color:#c0392b55; }
   .upload-submit {
-    width:100%; padding:13px 20px; margin-top:6px;
+    width:100%; padding:12px 20px; margin-top:4px;
     background: linear-gradient(90deg,var(--red-dark),var(--red));
     color:#fff; border:none; cursor:pointer;
     font-family:'Orbitron',sans-serif; font-size:10px;
-    letter-spacing:3px; text-transform:uppercase; border-radius:1px;
-    transition:all .2s;
+    letter-spacing:3px; text-transform:uppercase; border-radius:1px; transition:all .2s;
   }
   .upload-submit:hover { background:linear-gradient(90deg,var(--red),#e74c3c); }
   .upload-submit:disabled { background:#2a1a1a; color:#4a2222; cursor:default; }
   .upload-status {
-    margin-top:10px; font-family:'Orbitron',sans-serif; font-size:9px;
-    letter-spacing:2px; text-align:center; min-height:18px;
+    margin-top:8px; font-family:'Orbitron',sans-serif; font-size:9px;
+    letter-spacing:2px; text-align:center; min-height:16px;
   }
   .upload-status.ok  { color:#6eaa6e; }
   .upload-status.err { color:var(--red-glow); }
 
-  /* ── LIKE BUTTON ON DETAIL ── */
+  /* ── LIKE BUTTON ── */
   .detail-like-btn {
     display:flex; align-items:center; justify-content:center; gap:8px;
     width:100%; padding:12px 20px; margin-top:10px;
-    border:1px solid #c0392b33; background:none; color:#6b3a3a;
+    border:1px solid #c0392b44; background:none; color:#8a4a4a;
     font-family:'Orbitron',sans-serif; font-size:10px;
     letter-spacing:2px; text-transform:uppercase;
     cursor:pointer; border-radius:1px; transition:all .2s;
   }
-  .detail-like-btn:hover   { border-color:var(--red); color:var(--red-glow); }
-  .detail-like-btn.liked   { border-color:#c0392b88; color:var(--red-glow); background:#c0392b11; }
-  .detail-like-btn:disabled { opacity:.4; cursor:default; }
+  .detail-like-btn:hover { border-color:var(--red); color:var(--red-glow); }
+  .detail-like-btn.liked { border-color:#c0392b99; color:var(--red-glow); background:#c0392b14; }
+
+  /* ── SUBSCRIBE BUTTON ── */
+  .detail-sub-btn {
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    width:100%; padding:12px 20px; margin-top:10px;
+    border:1px solid #c8aa6e55; cursor:pointer; border-radius:1px; transition:all .2s;
+    background: linear-gradient(90deg, var(--gold-dark), #a07840);
+    color:#fff; font-family:'Orbitron',sans-serif; font-size:10px;
+    letter-spacing:2px; text-transform:uppercase; font-weight:700;
+  }
+  .detail-sub-btn:hover { background: linear-gradient(90deg, #a07840, var(--gold)); transform:translateY(-1px); }
+  .detail-sub-btn.subscribed {
+    background: none; border-color: #c8aa6e44; color: var(--gold-dark);
+  }
+  .detail-sub-btn.subscribed:hover { border-color: var(--red); color: var(--red-glow); }
 
   /* ── TOAST ── */
   .toast {
@@ -1325,7 +1328,7 @@
     background:#1a0c10; border:1px solid #c0392b44; color:var(--gold);
     padding:10px 24px; font-family:'Orbitron',sans-serif; font-size:9px;
     letter-spacing:2px; text-transform:uppercase; border-radius:1px;
-    z-index:99999; transition:transform .3s ease; white-space:nowrap;
+    z-index:99999; transition:transform .3s ease; white-space:nowrap; pointer-events:none;
   }
   .toast.show { transform:translateX(-50%) translateY(0); }
 
@@ -1333,19 +1336,24 @@
 </head>
 <body>
 
-<!-- FIREBASE AUTH BAR -->
+<!-- ── AUTH BAR ── -->
 <div class="auth-bar" id="authBar">
   <button class="auth-btn" id="authLoginBtn" onclick="signInGoogle()" style="display:none">
-    <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+    <svg width="16" height="16" viewBox="0 0 24 24">
+      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
+      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+    </svg>
     Se connecter
   </button>
   <img class="auth-avatar" id="authAvatar" src="" alt="Profil" style="display:none" onclick="openProfile()">
 </div>
 
-<!-- PROFILE OVERLAY BG -->
+<!-- ── PROFILE OVERLAY BG ── -->
 <div class="profile-overlay-bg" id="profileOverlayBg" onclick="closeProfile()"></div>
 
-<!-- PROFILE PANEL -->
+<!-- ── PROFILE PANEL ── -->
 <div class="profile-panel" id="profilePanel">
   <div class="profile-topbar">
     <span class="profile-title">✦ Mon Profil</span>
@@ -1357,7 +1365,7 @@
     <div class="profile-email" id="profileEmail">—</div>
   </div>
 
-  <!-- UPLOAD SECTION -->
+  <!-- UPLOAD -->
   <div class="upload-section">
     <div class="profile-section-title">⬆ Proposer un Skin</div>
     <div class="upload-drop" id="uploadDrop" onclick="document.getElementById('uploadFileInput').click()">
@@ -1367,7 +1375,7 @@
     </div>
     <input type="file" id="uploadFileInput" accept="image/*" style="display:none">
     <div class="upload-input-row">
-      <label class="upload-label">Nom du Champion</label>
+      <label class="upload-label">Champion</label>
       <input class="upload-input" type="text" id="uploadChamp" placeholder="Ex: Yasuo">
     </div>
     <div class="upload-input-row">
@@ -1382,26 +1390,29 @@
     <div class="upload-status" id="uploadStatus"></div>
   </div>
 
-  <!-- FAVORITES SECTION -->
+  <!-- LIKED SKINS -->
   <div class="profile-section" style="margin-top:20px;">
-    <div class="profile-section-title">♡ Favoris</div>
-    <div class="profile-skin-grid" id="favoritesGrid">
-      <div class="profile-empty">Aucun favori pour l'instant</div>
+    <div class="profile-section-title">❤ Skins Likés</div>
+    <div class="profile-liked-grid" id="likedGrid">
+      <div class="profile-empty">Aucun like pour l&#39;instant</div>
     </div>
   </div>
 
-  <!-- LIKED SECTION -->
-  <div class="profile-section" style="margin-top:20px;">
-    <div class="profile-section-title">❤ Skins Likés</div>
-    <div class="profile-skin-grid" id="likedGrid">
-      <div class="profile-empty">Aucun like pour l'instant</div>
+  <!-- ABONNÉS -->
+  <div class="profile-section" style="margin-top:20px;" id="subSection">
+    <div class="profile-section-title">✦ Abonnement</div>
+    <div id="subStatus" style="font-family:Orbitron,sans-serif;font-size:9px;letter-spacing:2px;color:var(--text-dim);padding:10px 0;text-align:center;">
+      Chargement...
     </div>
+    <button class="detail-sub-btn" id="profileSubBtn" onclick="toggleSubscribe()" style="margin-top:0;">
+      ✦ <span id="profileSubBtnText">S'abonner à YoutZo</span>
+    </button>
   </div>
 
   <button class="profile-logout-btn" onclick="signOut()">→ Se déconnecter</button>
 </div>
 
-<!-- TOAST -->
+<!-- ── TOAST ── -->
 <div class="toast" id="toast"></div>
 
 <!-- clock atmosphere -->
@@ -1520,8 +1531,11 @@
 
         <!-- Download button pinned at top -->
         <button class="detail-dl-btn" id="detailDlBtn">⬇ Télécharger le Skin</button>
-        <button class="detail-like-btn" id="detailLikeBtn" onclick="toggleLike()">♡ <span id="detailLikeCount">0</span> Likes</button>
         <div class="detail-license" style="margin-bottom:16px;">Gratuit · Non affilié à Riot Games</div>
+        <button class="detail-like-btn" id="detailLikeBtn">♡ <span id="detailLikeCount">0</span> Likes</button>
+        <button class="detail-sub-btn" id="detailSubBtn" onclick="toggleSubscribe()">
+          ✦ <span id="subBtnText">S'abonner à YoutZo</span>
+        </button>
 
         <!-- Info rows -->
         <div class="detail-info-row">
@@ -2722,20 +2736,20 @@ async function incrementDownload(skinId) {
   await sbUpsert(skinId);
 }
 
-
-// ═══════════════════════════════════════════════════════════════
-//  FIREBASE AUTH
-// ═══════════════════════════════════════════════════════════════
 </script>
 
-<!-- Firebase SDK -->
+<!-- ══ FIREBASE AUTH MODULE ══ -->
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
-import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut as fbSignOut }
+import { initializeApp }
+  from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup,
+         signInWithRedirect, getRedirectResult,
+         onAuthStateChanged, signOut as fbSignOut }
   from "https://www.gstatic.com/firebasejs/11.7.1/firebase-auth.js";
-import { getFirestore, doc, getDoc, setDoc, updateDoc, arrayUnion, arrayRemove, increment }
+import { getFirestore, doc, getDoc, setDoc, updateDoc,
+         arrayUnion, arrayRemove, increment }
   from "https://www.gstatic.com/firebasejs/11.7.1/firebase-firestore.js";
-import { getStorage, ref as storageRef, uploadBytes, getDownloadURL }
+import { getStorage, ref as sRef, uploadBytes, getDownloadURL }
   from "https://www.gstatic.com/firebasejs/11.7.1/firebase-storage.js";
 
 const firebaseConfig = {
@@ -2744,199 +2758,184 @@ const firebaseConfig = {
   projectId: "youtzocustomskins",
   storageBucket: "youtzocustomskins.firebasestorage.app",
   messagingSenderId: "512957535853",
-  appId: "1:512957535853:web:a1b29ecf42e2e77bc91164",
-  measurementId: "G-F72X532E6R"
+  appId: "1:512957535853:web:a1b29ecf42e2e77bc91164"
 };
 
-const app  = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db   = getFirestore(app);
+const app     = initializeApp(firebaseConfig);
+const auth    = getAuth(app);
+const db      = getFirestore(app);
 const storage = getStorage(app);
 
-let currentUser  = null;
+let currentUser   = null;
 let currentSkinId = null;
 let userLikes     = [];
-let userFavs      = [];
 
-// ── GOOGLE SIGN IN ──
+// ── HELPERS ──
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._tid);
+  t._tid = setTimeout(() => t.classList.remove('show'), 2800);
+}
+window.showToast = toast;
+
+// ── CONNEXION GOOGLE ──
 window.signInGoogle = async () => {
+  const provider = new GoogleAuthProvider();
+  provider.setCustomParameters({ prompt: 'select_account' });
   try {
-    const provider = new GoogleAuthProvider();
     await signInWithPopup(auth, provider);
-  } catch(e) { showToast('Connexion annulée'); }
+  } catch(e) {
+    console.error('Auth error:', e.code, e.message);
+    if (e.code === 'auth/popup-blocked' ||
+        e.code === 'auth/popup-closed-by-user' ||
+        e.code === 'auth/cancelled-popup-request') {
+      toast('Redirection...');
+      await signInWithRedirect(auth, provider);
+    } else if (e.code === 'auth/unauthorized-domain') {
+      toast('Domaine non autorisé — voir console');
+      console.error('Ajoute ce domaine dans Firebase Console → Authentication → Authorized domains');
+    } else if (e.code !== 'auth/popup-closed-by-user') {
+      toast('Erreur: ' + (e.code || e.message));
+    }
+  }
 };
 
+// Résultat après redirect
+getRedirectResult(auth).then(r => {
+  if (r && r.user) toast('Connecté : ' + r.user.displayName);
+}).catch(() => {});
+
+// ── DÉCONNEXION ──
 window.signOut = async () => {
   await fbSignOut(auth);
   closeProfile();
-  showToast('Déconnecté');
+  toast('Déconnecté');
 };
 
 // ── AUTH STATE ──
 onAuthStateChanged(auth, async user => {
   currentUser = user;
-  const loginBtn  = document.getElementById('authLoginBtn');
-  const avatar    = document.getElementById('authAvatar');
+  const loginBtn = document.getElementById('authLoginBtn');
+  const avatar   = document.getElementById('authAvatar');
 
   if (user) {
     loginBtn.style.display = 'none';
-    avatar.src = user.photoURL || '';
-    avatar.style.display = 'block';
+    avatar.src             = user.photoURL || '';
+    avatar.style.display   = 'block';
 
-    // Init user doc if first time
-    const userRef = doc(db, 'users', user.uid);
-    const snap = await getDoc(userRef);
+    // Crée le doc utilisateur si premier login
+    const uRef = doc(db, 'users', user.uid);
+    const snap = await getDoc(uRef);
     if (!snap.exists()) {
-      await setDoc(userRef, {
-        name: user.displayName,
-        email: user.email,
-        photo: user.photoURL,
-        likes: [],
-        favorites: [],
-        createdAt: new Date()
+      await setDoc(uRef, {
+        name: user.displayName, email: user.email,
+        photo: user.photoURL, likes: [], createdAt: new Date()
       });
     }
-    const data = (await getDoc(userRef)).data();
+    const data = (await getDoc(uRef)).data();
     userLikes = data.likes || [];
-    userFavs  = data.favorites || [];
 
-    // Update detail like button if open
-    if (currentSkinId !== null) refreshLikeBtn(currentSkinId);
-
-    // Fill profile
-    document.getElementById('profilePhoto').src  = user.photoURL || '';
-    document.getElementById('profileName').textContent  = user.displayName || 'Utilisateur';
-    document.getElementById('profileEmail').textContent = user.email || '';
-    renderProfileSkins();
+    document.getElementById('profilePhoto').src          = user.photoURL || '';
+    document.getElementById('profileName').textContent   = user.displayName || 'Utilisateur';
+    document.getElementById('profileEmail').textContent  = user.email || '';
+    renderLikedGrid();
+    refreshSubState();
   } else {
     loginBtn.style.display = 'flex';
     avatar.style.display   = 'none';
-    userLikes = []; userFavs = [];
-    if (currentSkinId !== null) refreshLikeBtn(currentSkinId);
+    userLikes = [];
+    renderLikedGrid();
   }
+
+  // Rafraîchit le bouton like si un skin est ouvert
+  if (currentSkinId !== null) refreshLikeBtn(currentSkinId);
 });
 
 // ── PROFILE PANEL ──
-window.openProfile  = () => {
+window.openProfile = () => {
   document.getElementById('profilePanel').classList.add('open');
   document.getElementById('profileOverlayBg').classList.add('open');
-  renderProfileSkins();
+  renderLikedGrid();
 };
 window.closeProfile = () => {
   document.getElementById('profilePanel').classList.remove('open');
   document.getElementById('profileOverlayBg').classList.remove('open');
 };
 
-function renderProfileSkins() {
+function renderLikedGrid() {
+  const grid = document.getElementById('likedGrid');
   const SKINS = window._SKINS || [];
-  // Favorites
-  const favGrid = document.getElementById('favoritesGrid');
-  const favSkins = SKINS.filter(s => userFavs.includes(s.id));
-  favGrid.innerHTML = favSkins.length
-    ? favSkins.map(s => skinMiniCard(s)).join('')
-    : '<div class="profile-empty">Aucun favori</div>';
-
-  // Liked
-  const likedGrid = document.getElementById('likedGrid');
-  const likedSkins = SKINS.filter(s => userLikes.includes(s.id));
-  likedGrid.innerHTML = likedSkins.length
-    ? likedSkins.map(s => skinMiniCard(s)).join('')
-    : '<div class="profile-empty">Aucun like</div>';
-
-  // Clicks on mini cards
-  document.querySelectorAll('.profile-skin-mini').forEach(el => {
+  const liked = SKINS.filter(s => userLikes.includes(s.id));
+  if (!liked.length) {
+    grid.innerHTML = '<div class="profile-empty">Aucun like pour l\'instant</div>';
+    return;
+  }
+  grid.innerHTML = liked.map(s => `
+    <div class="profile-skin-mini" data-id="${s.id}">
+      ${s.img ? `<img src="${s.img}" alt="${s.name}" loading="lazy">` : ''}
+      <div class="profile-skin-mini-info">
+        <div class="profile-skin-mini-champ">${s.champ}</div>
+        <div class="profile-skin-mini-name">${s.name}</div>
+      </div>
+    </div>`).join('');
+  grid.querySelectorAll('.profile-skin-mini').forEach(el => {
     el.addEventListener('click', () => {
       closeProfile();
-      openDetail(parseInt(el.dataset.id));
+      if (window.openDetail) window.openDetail(parseInt(el.dataset.id));
     });
   });
 }
 
-function skinMiniCard(s) {
-  return `<div class="profile-skin-mini" data-id="${s.id}">
-    ${s.img ? `<img src="${s.img}" alt="${s.name}" loading="lazy">` : ''}
-    <div class="profile-skin-mini-info">
-      <div class="profile-skin-mini-champ">${s.champ}</div>
-      <div class="profile-skin-mini-name">${s.name}</div>
-    </div>
-  </div>`;
-}
-
 // ── LIKE ──
-window.toggleLike = async () => {
-  if (!currentUser) { showToast('Connecte-toi pour liker !'); return; }
-  if (currentSkinId === null) return;
-  const userRef = doc(db, 'users', currentUser.uid);
-  const skinRef = doc(db, 'skinLikes', String(currentSkinId));
-
-  if (userLikes.includes(currentSkinId)) {
-    userLikes = userLikes.filter(x => x !== currentSkinId);
-    await updateDoc(userRef, { likes: arrayRemove(currentSkinId) });
-    await setDoc(skinRef, { likes: increment(-1) }, { merge: true });
-  } else {
-    userLikes.push(currentSkinId);
-    await updateDoc(userRef, { likes: arrayUnion(currentSkinId) });
-    await setDoc(skinRef, { likes: increment(1) }, { merge: true });
-  }
-  await refreshLikeBtn(currentSkinId);
-  renderProfileSkins();
-};
-
-// ── FAVORITE ──
-window.toggleFavorite = async (skinId) => {
-  if (!currentUser) { showToast('Connecte-toi pour mettre en favori !'); return; }
-  const userRef = doc(db, 'users', currentUser.uid);
-  if (userFavs.includes(skinId)) {
-    userFavs = userFavs.filter(x => x !== skinId);
-    await updateDoc(userRef, { favorites: arrayRemove(skinId) });
-    showToast('Retiré des favoris');
-  } else {
-    userFavs.push(skinId);
-    await updateDoc(userRef, { favorites: arrayUnion(skinId) });
-    showToast('Ajouté aux favoris ♡');
-  }
-  renderProfileSkins();
-};
-
 async function refreshLikeBtn(skinId) {
-  const btn = document.getElementById('detailLikeBtn');
+  const btn     = document.getElementById('detailLikeBtn');
   const countEl = document.getElementById('detailLikeCount');
-  if (!btn) return;
+  if (!btn || !countEl) return;
+
+  // Récupère le compteur depuis Firestore
   try {
     const snap = await getDoc(doc(db, 'skinLikes', String(skinId)));
-    const count = snap.exists() ? (snap.data().likes || 0) : 0;
-    countEl.textContent = count;
-  } catch(e) {}
+    countEl.textContent = snap.exists() ? (snap.data().likes || 0) : 0;
+  } catch(e) { countEl.textContent = 0; }
+
   const liked = userLikes.includes(skinId);
   btn.classList.toggle('liked', liked);
-  btn.innerHTML = liked
-    ? `❤ <span id="detailLikeCount">${countEl.textContent}</span> Likes`
-    : `♡ <span id="detailLikeCount">${countEl.textContent}</span> Likes`;
+  btn.innerHTML = (liked ? '❤ ' : '♡ ') + '<span id="detailLikeCount">' + countEl.textContent + '</span> Likes';
+
+  // Important : réassigner le handler à chaque ouverture pour avoir le bon skinId
+  btn.onclick = () => toggleLike(skinId);
 }
 
-// Patch openDetail to also set currentSkinId + refresh likes
-const _origOpenDetail = window.openDetail;
+async function toggleLike(skinId) {
+  if (!currentUser) { toast('Connecte-toi pour liker !'); return; }
+
+  const uRef = doc(db, 'users', currentUser.uid);
+  const sRef2 = doc(db, 'skinLikes', String(skinId));
+
+  if (userLikes.includes(skinId)) {
+    // Unlike
+    userLikes = userLikes.filter(x => x !== skinId);
+    await updateDoc(uRef, { likes: arrayRemove(skinId) });
+    await setDoc(sRef2, { likes: increment(-1) }, { merge: true });
+  } else {
+    // Like
+    userLikes.push(skinId);
+    await updateDoc(uRef, { likes: arrayUnion(skinId) });
+    await setDoc(sRef2, { likes: increment(1) }, { merge: true });
+  }
+
+  await refreshLikeBtn(skinId);
+  renderLikedGrid();
+}
+
+// Patch openDetail pour capturer le skinId courant et mettre à jour le bouton like
+const _origOpen = window.openDetail;
 window.openDetail = function(id) {
   currentSkinId = id;
-  _origOpenDetail(id);
-  if (currentUser) refreshLikeBtn(id);
-  // also inject fav button into detail creator box
-  const box = document.querySelector('.detail-creator-box');
-  if (box && !document.getElementById('detailFavBtn')) {
-    const favBtn = document.createElement('button');
-    favBtn.id = 'detailFavBtn';
-    favBtn.style.cssText = 'margin-left:auto;background:none;border:1px solid #c0392b33;color:#8a4a4a;padding:6px 12px;font-family:Orbitron,sans-serif;font-size:8px;letter-spacing:2px;cursor:pointer;border-radius:1px;white-space:nowrap;';
-    favBtn.textContent = '♡ Favori';
-    favBtn.onclick = () => toggleFavorite(currentSkinId);
-    box.appendChild(favBtn);
-  }
-  if (document.getElementById('detailFavBtn')) {
-    const isFav = userFavs.includes(id);
-    const fb = document.getElementById('detailFavBtn');
-    fb.textContent = isFav ? '❤ Favori' : '♡ Favori';
-    fb.style.color = isFav ? 'var(--red-glow)' : '#8a4a4a';
-    fb.style.borderColor = isFav ? '#c0392b88' : '#c0392b33';
-  }
+  _origOpen(id);
+  // Léger délai pour que le DOM du detail soit rendu
+  setTimeout(() => { refreshLikeBtn(id); refreshSubState(); }, 80);
 };
 
 // ── UPLOAD ──
@@ -2950,73 +2949,143 @@ document.getElementById('uploadFileInput').addEventListener('change', e => {
   }
 });
 
-// Drag & drop
-const drop = document.getElementById('uploadDrop');
-drop.addEventListener('dragover', e => { e.preventDefault(); drop.classList.add('dragover'); });
-drop.addEventListener('dragleave', () => drop.classList.remove('dragover'));
-drop.addEventListener('drop', e => {
-  e.preventDefault(); drop.classList.remove('dragover');
+const dropZone = document.getElementById('uploadDrop');
+dropZone.addEventListener('dragover',  e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('dragover');
   uploadedFile = e.dataTransfer.files[0];
   if (uploadedFile) document.getElementById('uploadFileName').textContent = '✓ ' + uploadedFile.name;
 });
 
+// ── ABONNEMENT ──
+let isSubscribed = false;
+
+async function refreshSubState() {
+  if (!currentUser) {
+    isSubscribed = false;
+    updateSubBtns();
+    return;
+  }
+  try {
+    const snap = await getDoc(doc(db, 'subscribers', currentUser.uid));
+    isSubscribed = snap.exists() && snap.data().active === true;
+  } catch(e) { isSubscribed = false; }
+  updateSubBtns();
+
+  // Charge et affiche le total d'abonnés
+  try {
+    const countSnap = await getDoc(doc(db, 'meta', 'subscriberCount'));
+    const total = countSnap.exists() ? (countSnap.data().count || 0) : 0;
+    const subStatus = document.getElementById('subStatus');
+    if (subStatus) {
+      subStatus.textContent = isSubscribed
+        ? ('✓ Abonné · ' + total + ' abonné' + (total > 1 ? 's' : '') + ' au total')
+        : (total + ' abonné' + (total > 1 ? 's' : ''));
+    }
+  } catch(e) {}
+}
+
+function updateSubBtns() {
+  // Bouton dans la fiche skin
+  const detailBtn = document.getElementById('detailSubBtn');
+  const detailTxt = document.getElementById('subBtnText');
+  if (detailBtn && detailTxt) {
+    detailBtn.classList.toggle('subscribed', isSubscribed);
+    detailTxt.textContent = isSubscribed ? '✓ Abonné' : "S'abonner à YoutZo";
+  }
+  // Bouton dans le profil
+  const profileBtn = document.getElementById('profileSubBtn');
+  const profileTxt = document.getElementById('profileSubBtnText');
+  if (profileBtn && profileTxt) {
+    profileBtn.classList.toggle('subscribed', isSubscribed);
+    profileTxt.textContent = isSubscribed ? '✓ Abonné — Se désabonner' : "S'abonner à YoutZo";
+  }
+}
+
+window.toggleSubscribe = async () => {
+  if (!currentUser) { toast("Connecte-toi pour t'abonner !"); return; }
+
+  const subRef   = doc(db, 'subscribers', currentUser.uid);
+  const metaRef  = doc(db, 'meta', 'subscriberCount');
+
+  if (isSubscribed) {
+    // Se désabonner
+    await setDoc(subRef, { active: false, uid: currentUser.uid, updatedAt: new Date() }, { merge: true });
+    await setDoc(metaRef, { count: increment(-1) }, { merge: true });
+    isSubscribed = false;
+    toast('Désabonné');
+  } else {
+    // S'abonner
+    await setDoc(subRef, {
+      active: true,
+      uid: currentUser.uid,
+      name: currentUser.displayName,
+      email: currentUser.email,
+      photo: currentUser.photoURL,
+      subscribedAt: new Date()
+    }, { merge: true });
+    await setDoc(metaRef, { count: increment(1) }, { merge: true });
+    isSubscribed = true;
+    toast('Abonné à YoutZo ✦');
+  }
+  updateSubBtns();
+  await refreshSubState();
+};
+
+// Refresh sub state quand profil ouvert
+const _origOpenProfile = window.openProfile;
+window.openProfile = () => {
+  _origOpenProfile();
+  if (currentUser) refreshSubState();
+};
+
 window.submitSkin = async () => {
-  if (!currentUser) { showToast("Connecte-toi d'abord !"); return; }
-  const champ = document.getElementById('uploadChamp').value.trim();
-  const name  = document.getElementById('uploadSkinName').value.trim();
-  const desc  = document.getElementById('uploadDesc').value.trim();
+  if (!currentUser) { toast("Connecte-toi d'abord !"); return; }
+  const champ  = document.getElementById('uploadChamp').value.trim();
+  const name   = document.getElementById('uploadSkinName').value.trim();
+  const desc   = document.getElementById('uploadDesc').value.trim();
   const status = document.getElementById('uploadStatus');
 
-  if (!champ || !name) { status.className='upload-status err'; status.textContent='Remplis le champion et le nom !'; return; }
+  if (!champ || !name) {
+    status.className = 'upload-status err';
+    status.textContent = 'Champion et nom requis !';
+    return;
+  }
 
   const btn = document.getElementById('uploadBtn');
   btn.disabled = true;
-  status.className='upload-status'; status.textContent='Envoi en cours...';
+  status.className = 'upload-status'; status.textContent = 'Envoi en cours...';
 
   try {
     let imageUrl = '';
     if (uploadedFile) {
-      const sRef = storageRef(storage, `skin_proposals/${currentUser.uid}_${Date.now()}_${uploadedFile.name}`);
-      await uploadBytes(sRef, uploadedFile);
-      imageUrl = await getDownloadURL(sRef);
+      const r = sRef(storage, 'proposals/' + currentUser.uid + '_' + Date.now() + '_' + uploadedFile.name);
+      await uploadBytes(r, uploadedFile);
+      imageUrl = await getDownloadURL(r);
     }
-
-    await setDoc(doc(db, 'skinProposals', `${currentUser.uid}_${Date.now()}`), {
-      userId: currentUser.uid,
-      userName: currentUser.displayName,
-      userEmail: currentUser.email,
-      champ, name, desc, imageUrl,
-      status: 'pending',
-      createdAt: new Date()
+    await setDoc(doc(db, 'skinProposals', currentUser.uid + '_' + Date.now()), {
+      userId: currentUser.uid, userName: currentUser.displayName,
+      champ, name, desc, imageUrl, status: 'pending', createdAt: new Date()
     });
-
-    status.className='upload-status ok'; status.textContent='✓ Proposition envoyée avec succès !';
+    status.className = 'upload-status ok'; status.textContent = '✓ Proposition envoyée !';
     document.getElementById('uploadChamp').value = '';
     document.getElementById('uploadSkinName').value = '';
     document.getElementById('uploadDesc').value = '';
     document.getElementById('uploadFileName').textContent = '';
     document.getElementById('uploadDrop').style.borderColor = '';
     uploadedFile = null;
-    showToast('Proposition envoyée ✓');
+    toast('Proposition envoyée ✓');
   } catch(e) {
-    status.className='upload-status err'; status.textContent='Erreur : ' + e.message;
+    status.className = 'upload-status err'; status.textContent = 'Erreur : ' + e.message;
   }
   btn.disabled = false;
 };
 
-// ── TOAST ──
-window.showToast = (msg) => {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2800);
-};
-
-// ── EXPOSE SKINS to module ──
-// (openDetail is already on window, set after render)
 </script>
 <script>
-// Re-expose SKINS array to module scope
-window._SKINS = SKINS;
+// Expose le tableau SKINS au module Firebase
+window._SKINS = typeof SKINS !== 'undefined' ? SKINS : [];
 
 let roleFilter  = 'all';
 let catFilter   = 'all';
